@@ -15,7 +15,7 @@ using TietoEnator.WebFW.CM.Controls;
 
 public partial class Pages_invoice_Invoices : CMPage
 {
-    //20080514 marttmik : added a variable used for getting company specific images / styles etc.
+    //added a variable used for getting company specific images / styles etc.
     public string COMPANY_CODE; 
     private const string PROFILE_ERRANDLIST = "GridViewColumnOrders.ErrandListGridView";
     private const string DDL_ERRAND_TYPES = "ErrandTypes";
@@ -67,7 +67,7 @@ public partial class Pages_invoice_Invoices : CMPage
             {
                 columnOrderCustomizer.ColumnOrderList = columnOrderCustomizer.GetColumnOrder(gvErrandList);
             }
-            //marttmik 151107 : added check for showing search results ( SCROLL | DEFAULT )
+            // 151107 : added check for showing search results ( SCROLL | DEFAULT )
             int maxNumOfInvoices;
             int.TryParse(ConfigurationManager.AppSettings["MaxNumberOfInvoices"], out maxNumOfInvoices);
             CMCommonUtils.CheckGVListStyle(gvErrandList, maxNumOfInvoices);
@@ -220,7 +220,7 @@ public partial class Pages_invoice_Invoices : CMPage
         cbtField.HeaderID = null; // not a user customizable field       
         //cbtField.HeaderText = "<a href=\"javascript:showOrderCustomizer('divColumnOrderCustomizer')\"><img src='/Resources/img/properties.gif' style='border-width:0px' alt='Properties'/></a>";
         cbtField.HeaderText = "<a href=\"javascript:showOrderCustomizer('" + columnOrderCustomizer.showColumnOrderCustomizer + "', '" + columnOrderCustomizer.ID + "')\"><img src='/Resources/img/properties.gif' style='border-width:0px' alt='Properties'/></a>";
-        cbtField.ButtonType = ButtonType.Link; // Image button cannot be used because of the ASP.NET bug (action handler get's called twice)
+        cbtField.ButtonType = ButtonType.Link; 
         cbtField.CommandName = "Select";       
         cbtField.Visible = true;
         cbtField.Text = "<img src='/Resources/img/tablearrows/" + COMPANY_CODE + "/right_arrow.gif' style='border-width:0px'/>";
